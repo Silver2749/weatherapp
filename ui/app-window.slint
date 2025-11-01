@@ -1,0 +1,56 @@
+import { Button, LineEdit,VerticalBox,HorizontalBox } from "std-widgets.slint";
+
+export component WeatherApp inherits Window {
+    always-on-top: false;
+    full-screen: false;
+    in property <string> weather_text;
+ callback get_weather(city: string, country: string);
+GridLayout {
+    padding: 40px;
+    spacing: 40px;
+    Row {
+        Text {
+            text: "🌤️ Weather Station";
+            font-size: 24px;
+            horizontal-alignment: center;
+        }}
+        Row {
+           city:= LineEdit{
+                placeholder-text: "Enter City";
+                height: 50px;
+         horizontal-alignment: center;
+            }
+        }
+
+        Row {
+            country:=LineEdit {
+                placeholder-text: "Enter Country";
+                height: 50px;
+                 horizontal-alignment: center;
+            }
+        }
+        Row{Button {
+            text: "Get Weather";
+            primary: true;
+            height: 35px;
+        
+            clicked => {get_weather(city.text,country.text)
+                
+        }}}
+
+    Row    {Rectangle { background: #2a7a95;
+        height: 150px;
+        width: 300px;
+        border-radius: 10px;
+
+        Text {
+            text: root.weather_text;
+            wrap: word-wrap;
+            color: #030303;
+            font-size: 15px;
+            horizontal-alignment: center;
+
+
+        }}}}}
+        
+         
