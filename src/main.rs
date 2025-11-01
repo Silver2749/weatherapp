@@ -1,7 +1,7 @@
 use serde::Deserialize;
 slint::include_modules!();
 
-#[derive(Deserialize, Debug)] //function to deserialize the json and shift it to smaller modules like weather wind etc
+#[derive(Deserialize, Debug)] 
 struct WeatherResponse {
     weather: Vec<Weather>,
     main: Main,
@@ -9,12 +9,12 @@ struct WeatherResponse {
     name: String,
 }
 
-#[derive(Deserialize, Debug)]  //function to take the weather properties and include them in a single description
+#[derive(Deserialize, Debug)]  
 struct Weather {
     description: String,
 }
 
-#[derive(Deserialize, Debug)] // f64 should be default any lower and causes an error
+#[derive(Deserialize, Debug)] 
 struct Main {
     temp: f64,
     humidity: f64,
@@ -23,7 +23,7 @@ struct Main {
     temp_max: f64
 }
 
-#[derive(Deserialize, Debug)] //had to make a different struct for wind because integration with slint is causes problems
+#[derive(Deserialize, Debug)] 
 struct Wind {
     speed: f64,
 }
